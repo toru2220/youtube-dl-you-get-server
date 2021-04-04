@@ -115,7 +115,7 @@ def download(url, request_options):
     if re.search(r'twitter.com',url):
         try:
             output = subprocess.check_output(
-                [sys.executable, "you-get", url]
+                [sys.executable, "you-get", url, "-o","/youtube-dl/"]
             )
 
             print(output.decode("ascii"))
