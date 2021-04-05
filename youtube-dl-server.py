@@ -34,7 +34,7 @@ async def dl_queue_list(request):
 async def q_put(request):
     form = await request.form()
     url = form.get("url").strip()
-    options = {"format": form.get("format")}
+    options = {"format": form.get("format"), "tool": form.get("tool")}
 
     if not url:
         return JSONResponse(
@@ -112,24 +112,32 @@ def get_ydl_options(request_options):
 
 def download(url, request_options):
 
-    if re.search(r'twitter.com',url):
-        try:
-            output = subprocess.check_output(
-                ["/usr/local/bin/you-get", url, "-o","/youtube-dl/"]
-            )
+    tool = request_options.get("tool", "youtube-dl")
 
-            print(output.decode("utf-8"))
-        except subprocess.CalledProcessError as e:
-            print(e.output)
+    if tool == "youtube-dl":
+        you_get(url, request_options)
 
     else:
-        with YoutubeDL(get_ydl_options(request_options)) as ydl:
-            ydl.download([url])
+        youtube_dl(url, request_options)
 
+def youtube_dl(url, request_options):
+    with YoutubeDL(get_ydl_options(request_options)) as ydl:
+        ydl.download([url])
+
+def you_get(url, request_options):
+    try:
+        output = subprocess.check_output(
+            ["/usr/local/bin/you-get", url, "-o","/youtube-dl/"]
+        )
+
+        print(output.decode("utf-8"))
+    except subprocess.CalledProcessError as e:
+        print(e.output)
 
 routes = [
     Route("/youtube-dl", endpoint=dl_queue_list),
     Route("/youtube-dl/q", endpoint=q_put, methods=["POST"]),
+    Route("/you-get/q", endpoint=q_put, methods=["POST"]),
     Route("/youtube-dl/update", endpoint=update_route, methods=["PUT"]),
     Mount("/youtube-dl/static", app=StaticFiles(directory="static"), name="static"),
 ]

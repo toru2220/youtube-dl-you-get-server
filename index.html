@@ -18,14 +18,16 @@
   <div class="container d-flex flex-column text-light text-center">
     <div class="flex-grow-1"></div>
     <div class="jumbotron bg-transparent flex-grow-1">
-      <h1 class="display-4">youtube-dl</h1>
+      <h1 class="display-4">youtube-dl anf you-get</h1>
       <p class="lead">Enter a video url to download the video to the server. Url can be to YouTube or <a class="text-info"
           href="https://ytdl-org.github.io/youtube-dl/supportedsites.html">any
           other supported site</a>. The server will automatically download the highest quality version available.</p>
       <hr class="my-4">
       <div>
+        <h2 class="display-4">youtube-dl</h2>
         <form action="/youtube-dl/q" method="POST">
           <div class="input-group">
+            <hidden name="tool" name="youtube-dl" />
             <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
             <select class="custom-select" name="format">
               <optgroup label="Video">
@@ -53,6 +55,38 @@
             </div>
           </div>
         </form>
+
+        <h2 class="display-4">you-get</h2>
+        <form action="/you-get/q" method="POST">
+          <div class="input-group">
+            <hidden name="tool" name="you-get" />
+            <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
+            <select class="custom-select" name="format">
+              <optgroup label="Video">
+                <option value="bestvideo">Best Video</option>
+                <option value="mp4">MP4</option>
+                <option value="flv">Flash Video (FLV)</option>
+                <option value="webm">WebM</option>
+                <option value="ogg">Ogg</option>
+                <option value="mkv">Matroska (MKV)</option>
+                <option value="avi">AVI</option>
+              </optgroup>
+              <optgroup label="Audio">
+                <option value="bestaudio">Best Audio</option>
+                <option value="aac">AAC</option>
+                <option value="flac">FLAC</option>
+                <option value="mp3">MP3</option>
+                <option value="m4a">M4A</option>
+                <option value="opus">Opus</option>
+                <option value="vorbis">Vorbis</option>
+                <option value="wav">WAV</option>
+              </optgroup>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit" id="button-submit">Submit</button>
+            </div>
+          </div>
+        </form>        
       </div>
     </div>
     <footer>
