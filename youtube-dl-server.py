@@ -137,7 +137,6 @@ def you_get(url, request_options):
 routes = [
     Route("/youtube-dl", endpoint=dl_queue_list),
     Route("/youtube-dl/q", endpoint=q_put, methods=["POST"]),
-    Route("/you-get/q", endpoint=q_put, methods=["POST"]),
     Route("/youtube-dl/update", endpoint=update_route, methods=["PUT"]),
     Mount("/youtube-dl/static", app=StaticFiles(directory="static"), name="static"),
 ]

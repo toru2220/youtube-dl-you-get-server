@@ -23,8 +23,8 @@
           href="https://ytdl-org.github.io/youtube-dl/supportedsites.html">any
           other supported site</a>. The server will automatically download the highest quality version available.</p>
       <hr class="my-4">
+      <h2 class="display-4">youtube-dl</h2>
       <div>
-        <h2 class="display-4">youtube-dl</h2>
         <form action="/youtube-dl/q" method="POST">
           <div class="input-group">
             <hidden name="tool" name="youtube-dl" />
@@ -54,10 +54,13 @@
               <button class="btn btn-primary" type="submit" id="button-submit">Submit</button>
             </div>
           </div>
-        </form>
-
+        </form>      
+      </div>
+      <hr class="my-4">
+      <h2 class="display-4">you-get</h2>
+      <div>
         <h2 class="display-4">you-get</h2>
-        <form action="/you-get/q" method="POST">
+        <form action="/youtube-dl/q" method="POST">
           <div class="input-group">
             <hidden name="tool" name="you-get" />
             <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
@@ -87,7 +90,7 @@
             </div>
           </div>
         </form>        
-      </div>
+      </div>      
     </div>
     <footer>
       <div>
