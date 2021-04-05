@@ -61,7 +61,7 @@ def update():
             [sys.executable, "-m", "pip", "install", "--upgrade", "youtube-dl", "you-get"]
         )
 
-        print(output.decode("ascii"))
+        print(output.decode("utf-8"))
     except subprocess.CalledProcessError as e:
         print(e.output)
 
@@ -118,7 +118,7 @@ def download(url, request_options):
                 ["/usr/local/bin/you-get", url, "-o","/youtube-dl/"]
             )
 
-            print(output.decode("ascii"))
+            print(output.decode("utf-8"))
         except subprocess.CalledProcessError as e:
             print(e.output)
 
