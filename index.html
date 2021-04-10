@@ -14,17 +14,16 @@
   <title>youtube-dl</title>
 
   <script language="javascript" type="text/javascript">
-    function post_download(url,format,tool,savelocation) {
-      alert(url);
+    function post_download() {
       fetch(
         "/youtube-dl/q"
         ,{
           body:new URLSearchParams(
             {
-              url: url
-              ,format:format
-              ,tool:tool
-              ,savelocation:savelocation
+              url: window.getElementById("url").value
+              ,format:window.getElementById("format").value
+              ,tool:window.getElementById("tool").value
+              ,savelocation:window.getElementById("savelocation").value
             }
           )
           ,method:"POST"
@@ -45,8 +44,8 @@
       <hr class="my-4">
       <div>
           <div class="input-group">
-            <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
-            <select class="custom-select" name="format">
+            <input id="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
+            <select class="custom-select" id="format">
               <optgroup label="Video">
                 <option value="bestvideo">Best Video</option>
                 <option value="mp4">MP4</option>
@@ -67,14 +66,14 @@
                 <option value="wav">WAV</option>
               </optgroup>
             </select>
-            <select class="custom-select" name="savelocation">
+            <select class="custom-select" id="savelocation">
               <option value="data" selected>savedir1(default)</option>
               <option value="data2">savedata2</option>
               <option value="data3">savedata3</option>
             </select>            
             <div class="input-group-append">
               <button class="btn show-toast" 
-              onClick="post_download(document.url,document.format,document.tool,document.savelocation);" 
+              onClick="post_download();" 
               value="download start">Start</button>
             </div>
           </div>
@@ -101,7 +100,7 @@
       $(".show-toast").click(function(){
         // $("#myToast").toast('show');
         $("#toastHeader").text('download start');
-        $("#toastBody").text(docuemnt.download.url.value);
+        $("#toastBody").text( $("#url").value() );
         $("#downToast").toast({ delay: 3000 }).toast('show');
       });
     }); 
