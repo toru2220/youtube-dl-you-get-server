@@ -44,7 +44,7 @@
       <hr class="my-4">
       <div>
           <div class="input-group">
-            <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" autofocus>
+            <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
             <select class="custom-select" name="format">
               <optgroup label="Video">
                 <option value="bestvideo">Best Video</option>
@@ -72,7 +72,9 @@
               <option value="data3">savedata3</option>
             </select>            
             <div class="input-group-append">
-              <button class="btn btn-primary show-toast" name="Start" value="download start">  
+              <button class="btn btn-primary show-toast" 
+              onClick="post_download(document.download.url.value,document.download.format.value,document.download.tool.value,document.download.savelocation.value);" 
+              value="download start">Download</button>
             </div>
           </div>
           <p class="lead">
@@ -97,21 +99,6 @@
      $(document).ready(function(){
       $(".show-toast").click(function(){
         // $("#myToast").toast('show');
-        fetch(
-          "/youtube-dl/q"
-          ,{
-            body:new URLSearchParams(
-              {
-                url: docuemnt.url.value
-                ,format:docuemnt.format.value
-                ,tool:docuemnt.tool.value
-                ,savelocation:docuemnt.savelocation.value
-              }
-            )
-            ,method:"POST"
-          }
-        );
-
         $("#toastHeader").text('download start');
         $("#toastBody").text(docuemnt.download.url.value);
         $("#downToast").toast({ delay: 3000 }).toast('show');
