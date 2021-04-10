@@ -123,13 +123,13 @@ def download(url, request_options):
     print("url:%s" % url)
     print("param:%s" % request_options)
 
-    if tool == "youtube-dl":
+    if tool == "you-get":
         print("via you-get")
-        youtube_dl(url, request_options)
+        you_get(str(url), request_options)
 
     else:
         print("via youtube-dl")
-        you_get(url, request_options)
+        youtube_dl(str(url), request_options)
 
 def youtube_dl(url, request_options):
     with YoutubeDL(get_ydl_options(request_options)) as ydl:
