@@ -24,7 +24,7 @@
           other supported site</a>. The server will automatically download the highest quality version available.</p>
       <hr class="my-4">
       <div>
-        <form action="/youtube-dl/q" method="POST">
+        <form action="/youtube-dl/q" method="POST" name="download">
           <div class="input-group">
             <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
             <select class="custom-select" name="format">
@@ -61,7 +61,8 @@
             <input type="radio" name="tool" value="youtube-dl" checked>youtube-dl
             <input type="radio" name="tool" value="you-get">you-get
           </p>
-        </form>      
+        </form>
+        <input type="button" onClick="javascript:!function(){fetch('/youtube-dl/q',{body:new URLSearchParams({url:'https://twitter.com/cx_mezamashi/status/1375230833053720577',format:'bestvideo'}),method:'POST'})}();" />   
       </div>     
     </div>
     <footer>
