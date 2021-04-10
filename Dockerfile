@@ -22,6 +22,6 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 
-VOLUME ["/youtube-dl"]
+VOLUME ["/data","/data2","data3"]
 
 CMD [ "python", "-u", "./youtube-dl-server.py" ]

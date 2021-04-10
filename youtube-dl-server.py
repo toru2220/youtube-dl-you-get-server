@@ -19,7 +19,7 @@ app_defaults = {
     "YDL_EXTRACT_AUDIO_FORMAT": None,
     "YDL_EXTRACT_AUDIO_QUALITY": "192",
     "YDL_RECODE_VIDEO_FORMAT": None,
-    "YDL_OUTPUT_TEMPLATE": "/youtube-dl/%(title).200s [%(id)s].%(ext)s",
+    "YDL_OUTPUT_TEMPLATE": "/data/%(title).150s [%(id)s].%(ext)s",
     "YDL_ARCHIVE_FILE": None,
     "YDL_SERVER_HOST": "0.0.0.0",
     "YDL_SERVER_PORT": 8080,
@@ -34,7 +34,7 @@ async def dl_queue_list(request):
 async def q_put(request):
     form = await request.form()
     url = form.get("url").strip()
-    options = {"format": form.get("format"), "tool": form.get("tool")}
+    options = {"format": form.get("format"), "tool": form.get("tool"), "location": form.get("location")}
 
     if not url:
         return JSONResponse(
@@ -100,6 +100,7 @@ def get_ydl_options(request_options):
                 "preferedformat": ydl_vars["YDL_RECODE_VIDEO_FORMAT"],
             }
         )
+
 
     return {
         "format": ydl_vars["YDL_FORMAT"],
