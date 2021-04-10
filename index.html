@@ -43,9 +43,8 @@
           other supported site</a>. The server will automatically download the highest quality version available.</p>
       <hr class="my-4">
       <div>
-        <form action="/youtube-dl/q" method="POST" name="download">
           <div class="input-group">
-            <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
+            <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" autofocus>
             <select class="custom-select" name="format">
               <optgroup label="Video">
                 <option value="bestvideo">Best Video</option>
@@ -73,15 +72,13 @@
               <option value="data3">savedata3</option>
             </select>            
             <div class="input-group-append">
-              <button class="btn btn-primary show-toast" 
-              value="download start">  
+              <button class="btn btn-primary show-toast" name="Start" value="download start">  
             </div>
           </div>
           <p class="lead">
             <input type="radio" name="tool" value="youtube-dl" checked>youtube-dl
             <input type="radio" name="tool" value="you-get">you-get
           </p>
-        </form> 
       </div>     
     </div>
     <footer>
@@ -105,10 +102,10 @@
           ,{
             body:new URLSearchParams(
               {
-                url: url
-                ,format:format
-                ,tool:tool
-                ,savelocation:savelocation
+                url: docuemnt.url.value
+                ,format:docuemnt.format.value
+                ,tool:docuemnt.tool.value
+                ,savelocation:docuemnt.savelocation.value
               }
             )
             ,method:"POST"
