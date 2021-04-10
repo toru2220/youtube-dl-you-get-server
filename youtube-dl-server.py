@@ -26,15 +26,13 @@ app_defaults = {
     "YDL_UPDATE_TIME": "True",
 }
 
-
 async def dl_queue_list(request):
     return templates.TemplateResponse("index.html", {"request": request})
-
 
 async def q_put(request):
     form = await request.form()
     url = form.get("url").strip()
-    options = {"format": form.get("format"), "tool": form.get("tool"), "location": form.get("location")}
+    options = {"format": form.get("format"), "tool": form.get("tool"), "savelocation": form.get("savelocation")}
 
     if not url:
         return JSONResponse(
@@ -79,6 +77,11 @@ def get_ydl_options(request_options):
         request_vars["YDL_EXTRACT_AUDIO_FORMAT"] = "best"
     elif requested_format in ["mp4", "flv", "webm", "ogg", "mkv", "avi"]:
         request_vars["YDL_RECODE_VIDEO_FORMAT"] = requested_format
+
+    requested_location = request_options.get("format", "savelocation")
+
+    if requested_location in ["data", "data2", "data3"]:
+        request_vars["YDL_OUTPUT_TEMPLATE"] = "/" + requested_location + "/%(title).150s [%(id)s].%(ext)s"
 
     ydl_vars = ChainMap(request_vars, os.environ, app_defaults)
 
@@ -126,9 +129,10 @@ def youtube_dl(url, request_options):
         ydl.download([url])
 
 def you_get(url, request_options):
+
     try:
         output = subprocess.check_output(
-            ["/usr/local/bin/you-get", url, "-o","/youtube-dl/"]
+            ["/usr/local/bin/you-get", url, "-o",request_options.get("savelocation","/data/")]
         )
 
         print(output.decode("utf-8"))
