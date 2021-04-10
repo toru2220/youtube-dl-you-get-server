@@ -13,7 +13,7 @@
 
   <title>youtube-dl</title>
 
-  <script src="./toast.js"></script>
+  <script src="youtube-dl/static/toast.js"></script>
   <script language="javascript" type="text/javascript">
     function post_download(url,format,tool,savelocation) {
       const options = {
@@ -21,7 +21,7 @@
           duration: 1000,
         }
       };
-      
+
       iqwerty.toast.toast('download start:' + url, options);    
 
       fetch(
