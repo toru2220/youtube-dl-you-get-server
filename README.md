@@ -4,10 +4,10 @@
 
 # youtube-dl-you-get-server
 
-Very spartan Web and REST interface for downloading youtube videos onto a server. [`starlette`](https://github.com/encode/starlette) + [`youtube-dl`](https://github.com/rg3/youtube-dl) + ["you-get"](https://you-get.org/)
+Very spartan Web and REST interface for downloading youtube videos onto a server. [`starlette`](https://github.com/encode/starlette) + [`youtube-dl`](https://github.com/rg3/youtube-dl) + [`you-get`](https://you-get.org/)
 
 
-![screenshot](youtube-dl-server.png)
+![screenshot](https://github.com/toru2220/youtube-dl-you-get-server/raw/main/youtube-dl-server.png)
 
 ## Running
 
