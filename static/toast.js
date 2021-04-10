@@ -15,7 +15,7 @@
  * Merge the DEFAULT_SETTINGS with the user defined options if specified
  * @param {Object} options The user defined options
  */
-export function mergeOptions(initialOptions, customOptions) {
+function mergeOptions(initialOptions, customOptions) {
 	const merged = customOptions;
 	for(const prop in initialOptions) {
 		if(merged.hasOwnProperty(prop)) {
@@ -34,13 +34,13 @@ export function mergeOptions(initialOptions, customOptions) {
  * @param {Element} element The HTML element to stylize
  * @param {Object}  styles  An object containing the style to apply
  */
-export function stylize(element, styles) {
+function stylize(element, styles) {
 	Object.keys(styles).forEach((style) => {
 		element.style[style] = styles[style];
 	});
 }
 
-export const toast = (() => {
+const toast = (() => {
 	/**
 	 * The Toast animation speed; how long the Toast takes to move to and from the screen
 	 * @type {number}
