@@ -21,10 +21,10 @@
         ,{
           body:new URLSearchParams(
             {
-              url:'https://twitter.com/cx_mezamashi/status/1375230833053720577'
-              ,format:'bestvideo'
-              ,tool:''
-              ,savelocation:''
+              url: document.download.url.value
+              ,format:document.download.format.value
+              ,tool:document.download.tool.value
+              ,savelocation:document.download.savelocation.value
             }
           )
           ,method:"POST"
