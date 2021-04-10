@@ -120,6 +120,7 @@ def download(url, request_options):
     tool = request_options.get("tool", "youtube-dl")
 
     print("download start")
+    print("url:%s" % url)
     print("param:%s" % request_options)
 
     if tool == "youtube-dl":
