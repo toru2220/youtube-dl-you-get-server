@@ -19,7 +19,7 @@ app_defaults = {
     "YDL_EXTRACT_AUDIO_FORMAT": None,
     "YDL_EXTRACT_AUDIO_QUALITY": "192",
     "YDL_RECODE_VIDEO_FORMAT": None,
-    "YDL_OUTPUT_TEMPLATE": "/data/%(title).150s [%(id)s].%(ext)s",
+    "YDL_OUTPUT_TEMPLATE": "/data/%(title).100s [%(id)s].%(ext)s",
     "YDL_ARCHIVE_FILE": None,
     "YDL_SERVER_HOST": "0.0.0.0",
     "YDL_SERVER_PORT": 8080,
@@ -81,7 +81,7 @@ def get_ydl_options(request_options):
     requested_location = request_options.get("format", "savelocation")
 
     if requested_location in ["data", "data2", "data3"]:
-        request_vars["YDL_OUTPUT_TEMPLATE"] = "/" + requested_location + "/%(title).150s [%(id)s].%(ext)s"
+        request_vars["YDL_OUTPUT_TEMPLATE"] = "/" + requested_location + "/%(title).100s [%(id)s].%(ext)s"
 
     ydl_vars = ChainMap(request_vars, os.environ, app_defaults)
 
@@ -119,13 +119,12 @@ def download(url, request_options):
     tool = request_options.get("tool", "youtube-dl")
 
     if tool == "youtube-dl":
-
-        print("download start via youtube-dl")
-        you_get(url, request_options)
-
-    else:
         print("download start via you-get")
         youtube_dl(url, request_options)
+
+    else:
+        print("download start via youtube-dl")
+        you_get(url, request_options)
 
 def youtube_dl(url, request_options):
     with YoutubeDL(get_ydl_options(request_options)) as ydl:
