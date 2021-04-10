@@ -52,7 +52,6 @@ async def update_route(scope, receive, send):
 
     return JSONResponse({"output": "Initiated package update"}, background=task)
 
-
 def update():
     try:
         output = subprocess.check_output(
@@ -78,7 +77,7 @@ def get_ydl_options(request_options):
     elif requested_format in ["mp4", "flv", "webm", "ogg", "mkv", "avi"]:
         request_vars["YDL_RECODE_VIDEO_FORMAT"] = requested_format
 
-    requested_location = request_options.get("format", "savelocation")
+    requested_location = request_options.get("savelocation", "data")
 
     if requested_location in ["data", "data2", "data3"]:
         request_vars["YDL_OUTPUT_TEMPLATE"] = "/" + requested_location + "/%(title).80s [%(id)s].%(ext)s"
