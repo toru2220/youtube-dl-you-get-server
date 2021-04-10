@@ -20,10 +20,10 @@
         ,{
           body:new URLSearchParams(
             {
-              url: window.getElementById("url").value
-              ,format:window.getElementById("format").value
-              ,tool:window.getElementById("tool").value
-              ,savelocation:window.getElementById("savelocation").value
+              url: document.getElementById("url")
+              ,format:document.getElementById("format")
+              ,tool:document.getElementById("tool")
+              ,savelocation:document.getElementById("savelocation")
             }
           )
           ,method:"POST"
