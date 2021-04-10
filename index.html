@@ -15,6 +15,7 @@
 
   <script language="javascript" type="text/javascript">
     function post_download(url,format,tool,savelocation) {
+      alert(url);
       fetch(
         "/youtube-dl/q"
         ,{
@@ -43,7 +44,6 @@
           other supported site</a>. The server will automatically download the highest quality version available.</p>
       <hr class="my-4">
       <div>
-        <form action="/youtube-dl/q" method="POST" name="download">
           <div class="input-group">
             <input name="url" type="url" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="button-submit" autofocus>
             <select class="custom-select" name="format">
@@ -74,7 +74,7 @@
             </select>            
             <div class="input-group-append">
               <button class="btn show-toast" 
-              onClick="post_download(document.download.url.value,document.download.format.value,document.download.tool.value,document.download.savelocation.value);" 
+              onClick="post_download(document.url,document.format,document.tool,document.savelocation);" 
               value="download start">Start</button>
             </div>
           </div>
@@ -82,7 +82,6 @@
             <input type="radio" name="tool" value="youtube-dl" checked>youtube-dl
             <input type="radio" name="tool" value="you-get">you-get
           </p>
-        </form> 
       </div>     
     </div>
     <footer>
