@@ -81,6 +81,8 @@ def get_ydl_options(request_options):
 
     if requested_location in ["data", "data2", "data3"]:
         request_vars["YDL_OUTPUT_TEMPLATE"] = "/" + requested_location + "/%(title).80s [%(id)s].%(ext)s"
+    else:
+        request_vars["YDL_OUTPUT_TEMPLATE"] = "/data/%(title).80s [%(id)s].%(ext)s"
 
     ydl_vars = ChainMap(request_vars, os.environ, app_defaults)
 
