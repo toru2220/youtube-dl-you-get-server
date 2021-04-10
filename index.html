@@ -12,6 +12,23 @@
   <link href="youtube-dl/static/style.css" rel="stylesheet">
 
   <title>youtube-dl</title>
+
+  <script language="javscript">
+    function post_download(url) {
+      fetch(
+        "/youtube-dl/q"
+        ,{
+          body:new URLSearchParams(
+            {
+              url:"https://twitter.com/cx_mezamashi/status/1375230833053720577",
+              format:"bestvideo"
+            }
+          )
+          ,method:"POST"
+        }
+      )
+    };
+  </script>
 </head>
 
 <body>
