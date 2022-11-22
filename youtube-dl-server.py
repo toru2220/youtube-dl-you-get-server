@@ -13,6 +13,11 @@ from youtube_dl import YoutubeDL
 from collections import ChainMap
 
 templates = Jinja2Templates(directory="")
+# templates = Jinja2Templates(directory="")
+# templates = Jinja2Templates(directory="")
+# templates = Jinja2Templates(directory="")
+# templates = Jinja2Templates(directory="")
+# templates = Jinja2Templates(directory="")
 
 app_defaults = {
     "YDL_FORMAT": "bestvideo+bestaudio/best",
